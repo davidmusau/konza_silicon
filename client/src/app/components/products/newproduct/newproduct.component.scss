@@ -1,0 +1,43 @@
+:host{
+  mat-card {
+    width: calc(100% - 70px);
+    height: calc(100% - 70px);
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
+
+  input, textarea, mat-select {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #172B4D;
+    padding: 16px;
+    outline: 0;
+    font-family: inherit;
+    font-size: 0.95em;
+    border-radius: 5px;
+  }
+
+  mat-label.ng-star-inserted::after {
+    content: " *";
+  }
+
+
+  .button-wrapper {
+    text-align: center;
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .button_label {
+    padding: 10px;
+    background-color: #172B4D;
+    color: #FFFFFF;
+    border-color: unset;
+    border-radius: 10px;
+  }
+}

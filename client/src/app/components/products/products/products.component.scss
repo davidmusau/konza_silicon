@@ -1,0 +1,44 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.info-text {
+  text-align: center;
+}
+
+mat-header-cell, mat-cell {
+  justify-content: center;
+  border: 1px solid black;
+}
+
+mat-icon {
+  color: white;
+  font-size: 20px;
+}
+
+th.mat-header-cell, td.mat-cell {
+  text-align: center !important;
+}
+
+mat-card {
+  border-radius: 5px;
+}
+
+button {
+  width: 100px;
+  height: 50px;
+  margin-right: 3px;
+}
+
+.button-action {
+  border: none !important;
+  color: transparent;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  margin-right: 10px
+}

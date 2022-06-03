@@ -1,0 +1,134 @@
+<mat-card class=" example-container">
+
+  <mat-card-header>
+    <mat-card-title>New Product</mat-card-title>
+    <div fxFlex></div>
+    <div fxLayoutAlign="center center">
+      <button (click)="onSubmit($event)"  style="border-radius: 10px; background-color:white;border-color: #7764E4; color: #7764E4"
+              type="submit">ADD Product
+      </button>
+    </div>
+  </mat-card-header>
+<hr/>
+  <mat-card-content>
+    <form  [formGroup]="productForm" class="example-form" >
+      <div [ngClass]="!submitted? 'hidden' : 'visible'" class="center-text"
+           style="background-color: #3c763d; color: white">
+        <span>{{responseMessage}}</span>
+      </div>
+
+      <table cellspacing="0" class="example-full-width">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" floatLabel="always"
+            >
+              <label for="productname">
+                Product Name
+                <span class="ng-star-inserted" style="color: red"> *</span>
+              </label>
+              <mat-label hidden></mat-label>
+
+              <input #productname formControlName="productname" id="productname" matInput placeholder="Enter Product Name"
+                     type="text">
+              <mat-error *ngIf="productForm.controls.productname.touched && productForm.controls.productname.invalid">
+                <span *ngIf="productForm.controls.productname.errors?.['required']">This field is mandatory.</span>
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" floatLabel="always"
+            >
+              <label for="price">
+                Price
+                <span class="ng-star-inserted" style="color: red"> *</span>
+              </label>
+              <mat-label hidden></mat-label>
+              <input #price formControlName="price" id="price" matInput placeholder="Enter Price" type="number">
+              <mat-error *ngIf="productForm.controls.price.touched && productForm.controls.price.invalid">
+                <span *ngIf="productForm.controls.price.errors?.['required']">This field is mandatory.</span>
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table  cellspacing="0"  class="example-full-width"
+      >
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" floatLabel="always"
+            >
+              <label for="quantity">
+                Quantity
+                <span class="ng-star-inserted" style="color: red"> *</span>
+              </label>
+              <mat-label hidden></mat-label>
+
+              <input #quantity formControlName="quantity" id="quantity" matInput placeholder="Enter Quantity"
+                     type="number">
+              <mat-error *ngIf="productForm.controls.quantity.touched && productForm.controls.quantity.invalid">
+                <span *ngIf="productForm.controls.quantity.errors?.['required']">This field is mandatory.</span>
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" floatLabel="always"
+            >
+              <label >
+                Category
+                <span class="ng-star-inserted" style="color: red"> *</span>
+              </label>
+              <mat-label hidden></mat-label>
+              <mat-select #category id="category" formControlName="category" id="category" placeholder="Select Category">
+                <mat-option *ngFor="let p of populateCategory" [value]="p.name">
+                  {{ p.name }}
+
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="productForm.controls.category.touched && productForm.controls.category.invalid">
+                <span *ngIf="productForm.controls.category.errors?.['required']">This field is mandatory.</span>
+              </mat-error>
+            </mat-form-field>
+
+          </td>
+        </tr>
+      </table>
+      <p>
+        <mat-form-field class="example-full-width" floatLabel="always"
+        >
+          <label for="description">
+            Description
+            <span class="ng-star-inserted" style="color: red"> *</span>
+          </label>
+          <mat-label hidden>
+          </mat-label>
+          <textarea #description COLS="35" formControlName="description" id="description" matInput maxlength="1000"
+                    placeholder="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+eopksio laborum. Sed ut perspiciatis unde omnis istpoe natus error sit voluptatem accusantium
+doloremque"></textarea>
+          <mat-error *ngIf="productForm.controls.description.touched && productForm.controls.description.invalid">
+            <span *ngIf="productForm.controls.description.errors?.['required']">This field is mandatory.</span>
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <div class="button-wrapper">
+        <p>
+          Upload Image
+          <span class="ng-star-inserted" style="color: red"> *</span>
+        </p>
+        <label class="button_label"  >
+
+          <mat-label>Select Image</mat-label>
+          <input #imageInput    formControlName="image"
+                 (change)="onFileInput(imageInput)"
+                 accept="image/*"
+                 style="display:none;" type="file"/>
+        </label>
+        <mat-error *ngIf="productForm.controls.image.touched && productForm.controls.image.invalid">
+          <span *ngIf="productForm.controls.image.errors?.['required']">This field is mandatory.</span>
+        </mat-error>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+

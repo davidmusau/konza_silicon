@@ -1,0 +1,71 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Our Products</mat-card-title>
+    <div fxFlex></div>
+    <div fxLayoutAlign="center center">
+      <button (click)="newproduct()" style="color: white;background-color: #7764E4; border: none; border-radius: 5px">
+        New Product
+      </button>
+      <button (click)="newcategory()" style="color: white;background-color: #7764E4; border: none; border-radius: 5px">
+        New Category
+      </button>
+      <button (click)="exportdata()" style="border-color: #7764E4; background-color: white; color: #7764E4;  border-radius: 5px;
+">Download
+      </button>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="mat-elevation-z8">
+    <table [dataSource]="dataSource" mat-table>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th *matHeaderCellDef mat-header-cell> ID</th>
+        <td *matCellDef="let element" mat-cell
+        > {{element.id}} </td>
+      </ng-container>
+      <!-- Product name Column -->
+      <ng-container matColumnDef="title">
+        <th *matHeaderCellDef mat-header-cell> Product Name</th>
+        <td *matCellDef="let element" mat-cell> {{element.title}} </td>
+      </ng-container>
+
+      <!-- Product Category Column -->
+      <ng-container matColumnDef="category">
+        <!--        <th *matHeaderCellDef mat-header-cell> Product Category</th>-->
+        <!--        <td *matCellDef="let element" mat-cell> {{element.category}} </td>-->
+        <th *matHeaderCellDef mat-header-cell> Category</th>
+        <td *matCellDef="let element" mat-cell>
+          <span *ngFor="let cat of element.category">{{cat.name}} , </span>
+        </td>
+      </ng-container>
+
+      <!-- price Column -->
+      <ng-container matColumnDef="price">
+        <th *matHeaderCellDef mat-header-cell> Price</th>
+        <td *matCellDef="let element" mat-cell> {{element.price}} </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th *matHeaderCellDef mat-header-cell> Action</th>
+        <td *matCellDef="let element" mat-cell>
+          <button class="button-action">
+            <mat-icon style="background-color: #11CDEF; ">edit</mat-icon>
+          </button>
+          <button class="button-action">
+            <mat-icon style="background-color: #F53C56;">close</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row
+      ></tr>
+    </table>
+
+    <mat-paginator [length]="products.length" [pageSizeOptions]="[8,16,20]" [pageSize]=""
+                   showFirstLastButtons></mat-paginator>
+
+    <p *ngIf="products.length <= 0 && !isLoading" class="info-text mat-body-1">Server not running!</p>
+  </mat-card-content>
+</mat-card>

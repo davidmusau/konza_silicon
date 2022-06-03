@@ -1,0 +1,76 @@
+<mat-toolbar   id="content">
+
+  <mat-toolbar-row>
+    <button  mat-icon-button (click)="toggleSideBar()">
+      <mat-icon >
+        menu
+      </mat-icon>
+    </button>
+
+    <div  style="flex-direction: row">
+      <mat-form-field class="input">
+        <mat-label>
+          <mat-icon>search</mat-icon>
+          search
+        </mat-label>
+        <input (keyup)="applyFilter()" matInput placeholder="Ex. maize" type="text">
+      </mat-form-field>
+    </div>
+
+    <div fxFlex fxLayout="row wrap" fxLayoutAlign="flex-end" style="margin-right: 50px">
+      <ul fxLayout="row" fxLayoutGap="20px">
+        <li>
+          <button mat-icon-button>
+            <mat-icon>notifications</mat-icon>
+          </button>
+        </li>
+        <li>
+          <button mat-icon-button>
+            <mat-icon>help_outline</mat-icon>
+          </button>
+        </li>
+                <li>
+                  <button mat-button [matMenuTriggerFor]="menu" style="display: inline">
+                    <div class="example-header-image" mat-card-avatar></div>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="onlogout()" >
+                      <mat-icon>exit_to_app</mat-icon>
+                      SignOut
+                    </button>
+                  </mat-menu>
+                </li>
+        <li>{{userName}}</li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!--<mat-sidenav-container>-->
+<!--  <mat-sidenav class="mat-elevation-z8">-->
+<!--    <button mat-button class="menu-button">-->
+<!--      <mat-icon>home</mat-icon>-->
+<!--      <span>Home</span>-->
+<!--    </button>-->
+<!--    <button mat-button class="menu-button">-->
+<!--      <mat-icon>person</mat-icon>-->
+<!--      <span>Profile</span>-->
+<!--    </button>-->
+<!--    <button mat-button class="menu-button">-->
+<!--      <mat-icon>info</mat-icon>-->
+<!--      <span>About</span>-->
+<!--    </button>-->
+
+<!--    <mat-divider></mat-divider>-->
+
+<!--    <button mat-button class="menu-button">-->
+<!--      <mat-icon>help</mat-icon>-->
+<!--      <span>Help</span>-->
+<!--    </button>-->
+<!--  </mat-sidenav>-->
+<!--  <mat-sidenav-content>-->
+<!--    <div class="content mat-elevation-z8">-->
+<!--      Main content here!-->
+<!--    </div>-->
+<!--  </mat-sidenav-content>-->
+<!--</mat-sidenav-container>-->
