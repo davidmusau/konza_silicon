@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>New Category</mat-card-title>
+    <div fxFlex></div>
+    <div fxLayoutAlign="center center">
+      <button (click)="getCategoryFormData()"
+              style="border-radius: 10px; background-color:white;border-color: #7764E4; color: #7764E4">ADD CATEGORY
+      </button>
+    </div>
+  </mat-card-header>
+  <hr>
+  <mat-card-content>
+    <div [ngClass]="!submitted? 'hidden' : 'visible'" class="center-text"
+         style="background-color: #3c763d; color: white">
+      <span>{{responseMessage}}</span>
+    </div>
+    <form [formGroup]="newcategoryForm" class="example-form">
+      <table cellpadding="0" class="example-full-width">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <label for="category">
+                Category Name
+                <span class="ng-star-inserted" style="color: red"> *</span>
+              </label>
+              <input formControlName="category" id="category" matInput placeholder="Enter category name" required
+                     type="text">
+              <mat-error *ngIf="newcategoryForm.controls.category.touched && newcategoryForm.controls.category.invalid">
+                <span *ngIf="newcategoryForm.controls.category.errors?.['required']">This field is mandatory.</span>
+              </mat-error>
+            </mat-form-field>
+
+          </td>
+        </tr>
+      </table>
+    </form>
+
+  </mat-card-content>
+</mat-card>

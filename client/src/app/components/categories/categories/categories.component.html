@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Our Category</mat-card-title>
+    <div fxFlex></div>
+    <div fxLayoutAlign="center center">
+      <button (click)="newcategory()" style="color: white;background-color: #7764E4; border: none; border-radius: 5px">
+        New Category
+      </button>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="mat-elevation-z8">
+    <table [dataSource]="dataSource" mat-table>
+
+      <!-- Category ID Column -->
+      <ng-container matColumnDef="id">
+        <th *matHeaderCellDef mat-header-cell> ID</th>
+        <td *matCellDef="let element" mat-cell
+        > {{element.id}} </td>
+      </ng-container>
+      <!-- Category name Column -->
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell> Category Name</th>
+        <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+      </ng-container>
+
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th *matHeaderCellDef mat-header-cell> Action</th>
+        <td *matCellDef="let element" mat-cell>
+          <button class="button-action">
+            <mat-icon style="background-color: #11CDEF; ">edit</mat-icon>
+          </button>
+          <button class="button-action">
+            <mat-icon style="background-color: #F53C56;">close</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row
+      ></tr>
+    </table>
+
+    <mat-paginator [length]="category.length" [pageSizeOptions]="[8,16,20]" [pageSize]=""
+                   showFirstLastButtons></mat-paginator>
+
+    <p *ngIf="category.length <= 0 && !isLoading" class="info-text mat-body-1">Server not running!</p>
+  </mat-card-content>
+</mat-card>
